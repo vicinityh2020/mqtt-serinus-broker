@@ -100,21 +100,18 @@ class SerinusDB:
 
         if sensor_type == 'CO2':
             r = self.CO2Record(sensor=sensor, meta_data=meta_data, value=value, timestamp=timestamp)
-            r.save()
         elif sensor_type == 'Movement':
             r = self.MovementRecord(sensor=sensor, meta_data=meta_data, value=value, timestamp=timestamp)
-            r.save()
         elif sensor_type == 'Humidity':
             r = self.HumidityRecord(sensor=sensor, meta_data=meta_data, value=value, timestamp=timestamp)
-            r.save()
         elif sensor_type == 'Temperature':
             r = self.TemperatureRecord(sensor=sensor, meta_data=meta_data, value=value, timestamp=timestamp)
-            r.save()
         elif sensor_type == 'Light':
             r = self.LightRecord(sensor=sensor, meta_data=meta_data, value=value, timestamp=timestamp)
-            r.save()
         elif sensor_type == 'Noise Ai1':
             r = self.NoiseRecord(sensor=sensor, meta_data=meta_data, value=value, timestamp=timestamp)
-            r.save()
         else:
             print('Unsupported sensor type: \'%s\'' % sensor_type)
+            return
+
+        r.save()
